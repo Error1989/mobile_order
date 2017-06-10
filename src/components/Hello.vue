@@ -58,8 +58,9 @@ export default {
         }).then((response) => {
           alert(response.text)
           this.$router.push({ path: '/message' })
-
+          this.$router.push({ path: '/message' })
         },(error) => {
+          alert(error.toString())
           alert(error.toString())
         })
       }
