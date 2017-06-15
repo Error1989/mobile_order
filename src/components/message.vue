@@ -5,6 +5,9 @@
     </div>
       <div class="jumbotron">
         <div class="container">
+          <div class="form-group">
+            <textarea class="form-control" rows="4" id="paste" placeholder="" v-model.trim="paste"></textarea>
+          </div>
           <form>
             <h4>姓名:</h4>
             <div class="form-group">
@@ -15,21 +18,21 @@
               <input type="number" class="form-control" id="phone" placeholder="请输入您的手机号" v-model.number="phone">
             </div>
             <h4>省市区:</h4>
-            <div class="form-group col-xs-4">
-              <select class="form-control" id="province" v-model="province">
-                <option v-for="province in provinces">{{ province.name }}</option>
-              </select>
+            <div data-toggle="distpicker">
+              <div class="form-group">
+                <label class="sr-only" for="province">Province</label>
+                <select class="form-control" id="province" v-model="province"></select>
+              </div>
+              <div class="form-group">
+                <label class="sr-only" for="city">City</label>
+                <select class="form-control" id="city" v-model="city"></select>
+              </div>
+              <div class="form-group">
+                <label class="sr-only" for="district">District</label>
+                <select class="form-control" id="district" v-model="district"></select>
+              </div>
             </div>
-            <div class="form-group col-xs-4">
-              <select class="form-control" id="city" v-model="city">
-                <option v-for="city in citys">{{ city.name }}</option>
-              </select>
-            </div>
-            <div class="form-group col-xs-4">
-              <select class="form-control" id="district" v-model="district">
-                <option v-for="district in districts">{{district.name}}</option>
-              </select>
-            </div>
+
             <h4>地址:</h4>
             <div class="form-group">
               <input type="text" class="form-control" id="address" placeholder="请输入详细地址" v-model.trim="address">
@@ -50,13 +53,12 @@
     <h6 class="text-center">常州极客邦文化传媒有限公司</h6>
   </div>
 </template>
-
 <script>
   export default {
     name: 'message',
     data () {
       return {
-        username: '啊啊',
+        username: '',
         phone: '',
         address: '',
         zip_code: '',
@@ -64,21 +66,9 @@
         province: '',
         city: '',
         district: '',
-        provinces: [
-          {name: '省份1'},
-          {name: '省份2'},
-          {name: '省份3'}
-        ],
-        citys: [
-          {name: '城市1'},
-          {name: '城市2'},
-          {name: '城市3'}
-        ],
-        districts: [
-          {name: '区县1'},
-          {name: '区县2'},
-          {name: '区县3'}
-        ]
+        provinces: '',
+        citys: '',
+        districts: ''
       }
     },
     methods: {
@@ -102,10 +92,12 @@
           },
           emulateJSON: true
         }).then((response) => {
-          alert(reponse)
+          alert('提交成功')
         },(error) => {
           alert('提交失败')
         })
+
+
       }
     }
   }

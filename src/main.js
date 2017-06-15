@@ -6,10 +6,15 @@ import Hello from './components/Hello.vue'
 import message from './components/message.vue'
 import './assets/css/bootstrap.css'
 import './assets/js/bootstrap.js'
+import distpicker from 'distpicker'
+import $ from 'jquery'
+// import axios from 'axios'
+// import VueAxios from 'vue-axios'
 import VueRouter from "vue-router"
 import VueResource from 'vue-resource'
 Vue.use(VueRouter)
 Vue.use(VueResource)
+// Vue.use(VueAxios, axios)
 let router = new VueRouter({
   mode: 'history',
   routes: [
@@ -38,5 +43,5 @@ new Vue({
   el: '#app',
   router,
   template: '<App/>',
-  components: { App, message }
+  components: { App, message ,distpicker,$}
 })
