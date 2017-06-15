@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ebf73347-614c-47a1-9bce-398974c63d8f" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/components/123.html" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/Hello.vue" afterPath="$PROJECT_DIR$/src/components/Hello.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/message.vue" afterPath="$PROJECT_DIR$/src/components/message.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main.js" afterPath="$PROJECT_DIR$/src/main.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -321,7 +315,7 @@
       <workItem from="1497075569294" duration="3840000" />
       <workItem from="1497316616833" duration="6812000" />
       <workItem from="1497420794466" duration="634000" />
-      <workItem from="1497489472950" duration="9705000" />
+      <workItem from="1497489472950" duration="10297000" />
     </task>
     <task id="LOCAL-00001" summary="test2">
       <created>1497076367201</created>
@@ -334,7 +328,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="86228000" />
+    <option name="totallyTimeSpent" value="86820000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1050" extended-state="7" />
