@@ -1,39 +1,28 @@
 <template>
   <div id="login">
-    <div class="page-header">
-      <h3 class="text-center">欢迎登陆</h3>
-    </div>
-    <div class="jumbotron">
-      <div class="container">
-        <form class="form-horizontal">
-          <div class="form-group form-group-lg">
-            <label for="phone" class="col-sm-2 control-label">手机号：</label>
-            <div class="col-sm-10">
-              <input type="number" class="form-control" id="phone" placeholder="请输入您的手机号码" v-model.number="phone">
-            </div>
-          </div>
-          <div class="form-group form-group-lg">
-            <label for="password" class="col-sm-2 control-label">密码：</label>
-            <div class="col-sm-10">
-              <input type="password" class="form-control" id="password" placeholder="请输入您的密码" v-model="password">
-            </div>
-          </div><br/><br/><br/>
-          <div class="form-group">
-            <div class="col-xs-12">
-              <button type="submit" class="btn btn-info btn-lg btn-block" v-if="phone&&password" @click="onLogin">登陆</button>
-              <button type="submit" class="btn btn-info btn-lg btn-block" disabled="disabled" v-else>登陆</button>
-            </div>
-          </div>
-        </form>
+    <header>
+      <h3>欢迎登陆</h3>
+    </header>
+    <div class="weui-cell">
+      <div class="weui-cell__hd"><label class="weui-label">手机号：</label></div>
+      <div class="weui-cell__bd">
+        <input class="weui-input" type="tel" pattern="[0-9]*" placeholder="请输入您的手机号" v-model.trim="phone">
       </div>
     </div>
-    <h6 class="text-center">常州极客邦文化传媒有限公司</h6>
+    <div class="weui-cell">
+      <div class="weui-cell__hd"><label class="weui-label">密码：</label></div>
+      <div class="weui-cell__bd">
+        <input class="weui-input" type="password" pattern="[0-9]*" placeholder="请输入您的密码" v-model.trim="password">
+      </div>
+    </div>
+    <button type="submit" class="weui-btn weui-btn_primary weui-flex__item " v-if="phone&&password" @click="onLogin">登录</button>
+    <button type="submit" class="weui-btn weui-btn_primary weui-flex__item weui-btn_disabled" v-else>登录</button>
   </div>
 </template>
 
 <script>
-
-export default {
+import axios from 'axios'
+export default{
   name: 'login',
       data () {
         return {
@@ -41,46 +30,60 @@ export default {
           password: '',
         }
   },
+  mounted () {
+
+  },
   methods: {
-      onLogin () {
-//        this.$http({
-//          url: 'http://116.62.172.150:8090/v1/app/user/login',
-//          method: 'post',
-//          data: {
-//            phone: this.phone,
-//            password: this.password
-//          },
-//          timeout: 2000,
-//          headers: {
-//            'Content-Type': 'x-www-from-urlencoded',
-//          },
-//          emulateJSON: true
-//        }).then((response) => {
-//          this.$router.push({path: '/message'})
-//        },(error) => {
-//          alert('提交失败')
-//        })
-          $.ajax({
-            type: 'post',
-            url: 'http://116.62.172.150:8090/v1/app/user/login',
-            data: {phone: this.phone, password: this.password},
-            cache: false,
-            async : false,
-            dataType: "json",
-            success: function (data ,textStatus, jqXHR)
-            {
-              alert("请求成功！");
-            },
-            error:function (XMLHttpRequest, textStatus, errorThrown) {
-              alert("请求失败！");
-            }
-          });
-      }
+    //登录功能
+    onLogin () {
+      let a = this.$router;
+      $.ajax({
+        type:'post',
+        url:'http://www.sikedaodi.com/jikebang/api/web/index.php?r=auth/login',
+        dataType:'json',
+        data:{phone:this.phone, password:this.password,},
+        async:false,
+        success:function (response) {
+        if(response.result==1){
+            alert(response.msg);
+            const customerId = response.data.id;
+            const access_token = response.data.access_token;
+
+            //将用户id和access_token保存在localStorage中
+            window.localStorage.setItem('customerId', customerId);
+            window.localStorage.setItem('access_token', access_token);
+            //跳转到导航页
+            a.push({path:'/navcom'});
+        }else{
+            alert(response.msg)
+        }
+        },
+        error:function (error) {
+          alert('网络异常')
+        }
+      })
+
+    }
   }
 }
+
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
+header {
+  padding: 35px 0;
+}
+header h3{
+  color: #3cc51f;
+  font-weight: 400;
+  font-size: 35px;
+  text-align: center;
+}
+button.weui-btn {
+  width: 70%;
+}
+button {
+  margin-top: 50px;
+}
 </style>
