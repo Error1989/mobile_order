@@ -2,7 +2,7 @@
   <div id="app">
     <router-view></router-view>
     <div class="weui-footer">
-      <p class="weui-footer__text">常州极客帮文化传媒有限公司</p>
+      <p class="weui-footer__text">常州极客邦文化传媒有限公司</p>
     </div>
   </div>
 </template>

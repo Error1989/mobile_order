@@ -126,7 +126,7 @@
       <div class="weui-cells weui-cells_form">
         <div class="weui-cell">
           <div class="weui-cell__bd">
-            <textarea class="weui-textarea" placeholder="请在此输入备注信息" rows="3" v-model="remark"></textarea>
+            <textarea class="weui-textarea" placeholder="请在此处输入备注信息" rows="3" v-model="remark"></textarea>
             <div class="weui-textarea-counter"><span>0</span>/200</div>
           </div>
         </div>

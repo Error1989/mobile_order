@@ -43,14 +43,14 @@
         getProduct(flag){
           this.loading = true;
           this.$http.post('http://www.sikedaodi.com/jikebang/api/web/index.php?r=product/list',{
-              page:this.page,
-              pagesize:this.pagesize,
+            page:this.page,
+            pagesize:this.pagesize,
           }).then(response=>{
               let res = response.data;
-              this.loading = true;
+              this.loading = false;
               if(flag) {
                 this.productData=this.productData.concat(res.data);//flag为true,分页的数据累加
-                if(res.count==0) {//如果count的值为0就禁止滑动，不再加载数据
+                if(res.data.length<this.pagesize) {
                   this.busy=true;
                 }else {
                   this.busy=false;

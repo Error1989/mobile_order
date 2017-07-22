@@ -1,10 +1,13 @@
 <template>
   <div id="navcom">
     <header>
-      <h3>嗑了么</h3>
+      <h3>物 社</h3>
     </header>
 
     <div class="weui-grids">
+      <!--banner图片-->
+      <div class="banner"><img src="../assets/img/banner2.jpg" alt=""></div>
+
       <a @click="order" class="weui-grid js_grid">
         <div class="weui-grid__icon">
           <img src="../assets/img/1.png" alt="新增订单">
@@ -69,7 +72,7 @@
             }
         },
         mounted () {
-          $(".swiper-container").swiper(config)
+
         },
         methods: {
           //退出当前系统
@@ -82,9 +85,9 @@
           order () {
             this.$router.push({path:'/order'});
             location.reload()
-          }
-        }
+          },
 
+        }
     }
 </script>
 
@@ -101,5 +104,12 @@
     text-align: center;
     font-family: "微软雅黑";
   }
-
+  .banner {
+    width: 100%;
+    height: auto;
+  }
+  .banner img {
+    max-width:100%;
+    height:auto;
+  }
 </style>

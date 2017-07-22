@@ -9,8 +9,8 @@
         <div class="weui-cell">
           <div class="weui-cell__bd">
             <p>{{item.id}}.{{item.receiver_province+item.receiver_city+item.receiver_district}}</p>
-            <p class="weui-media-box__desc">收货人：{{item.customer_name}}</p>
-            <p class="weui-media-box__desc">收货人电话：{{item.customer_phone}}</p>
+            <p class="weui-media-box__desc">收货人：{{item.receiver_name}}</p>
+            <p class="weui-media-box__desc">收货人电话：{{item.receiver_mobile}}</p>
             <p class="weui-media-box__desc">下单时间：{{item.update_time}}</p>
           </div>
           <div class="weui-cell__ft">{{item.order_status}}</div>
@@ -45,14 +45,15 @@
           this.$http.post('http://www.sikedaodi.com/jikebang/api/web/index.php?r=customer/my-orders',{
             customerId:window.localStorage.getItem('customerId'),
             access_token:window.localStorage.getItem('access_token'),
+            page:this.page,
+            pagesize:this.pagesize,
           })
             .then(response=>{
               let res = response.data;
-              console.log(res.data);
               this.loading = false;
               if(flag) {
                 this.searchData=this.searchData.concat(res.data);//flag为true,分页的数据累加
-                if(res.count==0) {//如果count的值为0就禁止滑动，不再加载数据
+                if(res.data.length<this.pagesize) {
                   this.busy=true;
                 }else {
                   this.busy=false;
