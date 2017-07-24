@@ -137,7 +137,6 @@
   </div>
 </template>
 <script>
-  import navcom from './navcom.vue'
   export default {
     name: 'message',
     data () {
@@ -210,7 +209,7 @@
   }
 </script>
 
-<style>
+<style scoped>
   header {
     padding: 10px 0;
     background-color: #3cc51f;

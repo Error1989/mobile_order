@@ -21,7 +21,6 @@
 </template>
 
 <script>
-import axios from 'axios'
 export default{
   name: 'login',
       data () {
@@ -80,7 +79,7 @@ header h3{
   font-size: 35px;
   text-align: center;
 }
-button.weui-btn {
+.weui-btn {
   width: 70%;
 }
 button {

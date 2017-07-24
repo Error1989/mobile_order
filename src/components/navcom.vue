@@ -80,7 +80,6 @@
             window.localStorage.removeItem('customerId');//清空customerId
             window.localStorage.removeItem('access_token');//清空access_token
             this.$router.push({path:'/login'});
-            location.reload()
           },
           order () {
             this.$router.push({path:'/order'});
@@ -91,7 +90,7 @@
     }
 </script>
 
-<style>
+<style scoped>
   header {
     padding: 10px 0;
     background-color: #3cc51f;

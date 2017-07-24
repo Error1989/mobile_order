@@ -1,5 +1,5 @@
 <template>
-    <div class="accessory">
+    <div id="accessory">
       <header>
         <router-link to="/navcom" style="float: left;margin-left: 10%;line-height: 40px;color: #ffffff;font-weight: 400;font-size: 25px;"><<</router-link>
         <h3>辅料列表</h3>
@@ -22,7 +22,6 @@
 </template>
 
 <script>
-  import navcom from './navcom.vue'
     export default {
         name: 'accessory',
         data () {
@@ -55,7 +54,7 @@
     }
 </script>
 
-<style>
+<style scoped>
   header {
     padding: 10px 0;
     background-color: #3cc51f;

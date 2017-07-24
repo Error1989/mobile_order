@@ -7,6 +7,7 @@ import order from './components/order.vue'
 import product from './components/product.vue'
 import accessory from './components/accessory.vue'
 import search from './components/search.vue'
+import order_details from './components/order_details.vue'
 import navcom from './components/navcom.vue'
 import distpicker from 'distpicker'
 import $ from 'jquery'
@@ -81,6 +82,15 @@ let router = new VueRouter({
       },
       component: search
     },
+    {
+      path: '/order_details',
+      name: 'order_details',
+      meta: {
+        // 添加该字段，表示进入这个路由是需要登录的
+        requireAuth: true,
+      },
+      component: order_details
+    },
   ]
 })
 
@@ -129,5 +139,5 @@ new Vue({
   el: '#app',
   router,
   template: '<App/>',
-  components: { App, order, product, accessory, search, navcom, distpicker}
+  components: { App, order, product, accessory, search, order_details, navcom, distpicker}
 })
