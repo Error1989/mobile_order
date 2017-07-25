@@ -5,6 +5,30 @@
         <h3>订单详情</h3>
       </header>
       <div class="weui-cells">
+        <div class="weui-cell" >
+          <div class="weui-cell__bd">
+            <p>订单编号：{{detailsData.id}}</p>
+          </div>
+          <div class="weui-cell__ft"></div>
+        </div>
+        <div class="weui-cell" >
+          <div class="weui-cell__bd">
+            <p>下单时间：{{detailsData.update_time}}</p>
+          </div>
+          <div class="weui-cell__ft"><p style="color: #ff0000">{{detailsData.order_status}}</p></div>
+        </div>
+        <div class="weui-cell" v-for="item in detailsData.products">
+          <div class="weui-cell__bd">
+            <p>{{item.id}}</p>
+          </div>
+          <div class="weui-cell__ft">{{item.count}}</div>
+        </div>
+        <div class="weui-cell" v-for="item in detailsData.accessories">
+          <div class="weui-cell__bd">
+            <p>{{item.id}}</p>
+          </div>
+          <div class="weui-cell__ft">{{item.count}}</div>
+        </div>
         <div class="weui-cell">
           <div class="weui-cell__bd">
             <p>收货人：{{detailsData.receiver_name}}</p>
@@ -15,12 +39,6 @@
             <p>备注信息：{{detailsData.remark}}</p>
           </div>
           <div class="weui-cell__ft"></div>
-        </div>
-        <div class="weui-cell" >
-          <div class="weui-cell__bd">
-            <p>下单时间：{{detailsData.update_time}}</p>
-          </div>
-          <div class="weui-cell__ft"><p style="color: #ff0000">{{detailsData.order_status}}</p></div>
         </div>
       </div>
       <div style="text-align: center">

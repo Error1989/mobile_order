@@ -45,7 +45,6 @@
             page:this.page,
             pagesize:this.pagesize,
           }).then(response=>{
-              console.log(response.data)
               let res = response.data;
               this.loading = false;
               if(flag) {

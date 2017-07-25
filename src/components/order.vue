@@ -4,74 +4,78 @@
       <router-link to="/navcom" style="float: left;margin-left: 10%;line-height: 40px;color: #ffffff;font-weight: 400;font-size: 25px;"><<</router-link>
       <h3>新增订单</h3>
     </header>
-
-      <!--<div class="weui-panel weui-panel_access">-->
-        <!--<div class="weui-panel__hd">商品选择：</div>-->
-            <!--<div style="text-align: center">-->
-                  <!--<a class="weui-btn weui-btn_mini weui-btn_primary" @click="productsPop" style="margin-left: 8%;margin-right: 8%">+</a>-->
-                  <!--<a class="weui-btn weui-btn_mini weui-btn_warn" @click="productsDelete" style="margin-left: 8%;margin-right: 8%">-</a>-->
-                <!--</div>-->
-        <!--<div class="weui-flex">-->
-                <!--<div class="weui-flex__item productsList">-->
-                  <!--<div class="placeholder">-->
-                    <!--<h4 class="weui-media-box__title">名称</h4>-->
-                    <!--<select class="products" v-model="products.id">-->
-                      <!--<option>方罐肉脯</option>-->
-                      <!--<option>嗑了么黑南瓜子</option>-->
-                      <!--<option>三川黑南瓜子</option>-->
-                      <!--<option>冰溪葵瓜子</option>-->
-                      <!--<option>波波葵瓜子</option>-->
-                      <!--<option>蛋解葵瓜子</option>-->
-                      <!--<option>婚礼葵瓜子</option>-->
-                      <!--<option>嘉壹度葵瓜子</option>-->
-                      <!--<option>杰记葵瓜子</option>-->
-                      <!--<option>嗑了么五香味葵瓜子</option>-->
-                      <!--<option>拉拉葵瓜子</option>-->
-                      <!--<option>领投会葵瓜子</option>-->
-                      <!--<option>民生葵瓜子</option>-->
-                      <!--<option>牛首山（黄）葵瓜子</option>-->
-                      <!--<option>牛首山（蓝）葵瓜子</option>-->
-                      <!--<option>青音葵瓜子</option>-->
-                      <!--<option>软软葵瓜子</option>-->
-                      <!--<option>十三妹葵瓜子</option>-->
-                      <!--<option>小狗钱钱葵瓜子</option>-->
-                      <!--<option>硬腿子葵瓜子</option>-->
-                      <!--<option>足球葵瓜子</option>-->
-                      <!--<option>嗑了么原味葵瓜子</option>-->
-                      <!--<option>嗑了么圆罐肉脯</option>-->
-                    <!--</select>-->
-                  <!--</div>-->
-                <!--</div>-->
-                <!--<div class="weui-flex__item products_countList">-->
-                  <!--<div class="placeholder">-->
-                    <!--<h4 class="weui-media-box__title">数量</h4>-->
-                    <!--<input type="number" class="products_count" v-model="products.count">-->
-                  <!--</div>-->
-                <!--</div>-->
-        <!--</div>-->
-        <!--<div class="weui-panel__hd">辅料选择：</div>-->
-            <!--<div style="text-align: center">-->
-              <!--<a class="weui-btn weui-btn_mini weui-btn_primary" type="submit" @click="accessoriesPop" style="margin-left: 8%;margin-right: 8%">+</a>-->
-              <!--<a class="weui-btn weui-btn_mini weui-btn_warn" type="submit" @click="accessoriesDelete" style="margin-left: 8%;margin-right: 8%">-</a>-->
-            <!--</div>-->
-        <!--<div class="weui-flex">-->
-            <!--<div class="weui-flex__item accessoriesList">-->
-              <!--<div class="placeholder">-->
-                <!--<h4 class="weui-media-box__title">名称</h4>-->
-                <!--<select class="accessories" v-model="accessories.id">-->
-                  <!--<option>纸箱</option>-->
-                  <!--<option>手拎袋</option>-->
-                <!--</select>-->
-              <!--</div>-->
-           <!--</div>-->
-            <!--<div class="weui-flex__item accessories_countList">-->
-              <!--<div class="placeholder">-->
-                <!--<h4 class="weui-media-box__title">数量</h4>-->
-                <!--<input type="number" class="accessories_count" v-model="accessories.count">-->
-              <!--</div>-->
-            <!--</div>-->
-          <!--</div>-->
-      <!--</div>-->
+    <div class="weui-cells weui-cells_form">
+      <div style="text-align: center">
+        <a href="javascript:;" class="open-popup weui-btn weui-btn_mini weui-btn_plain-primary" data-target="#products_data" style="margin-right: 15px">选择商品</a>
+        <a href="javascript:;" class="open-popup weui-btn weui-btn_mini weui-btn_plain-primary" data-target="#accessories_data" style="margin-left: 15px">选择辅料</a>
+      </div>
+      <!--订单商品部分-->
+      <div class="weui-cells__title">订单商品</div>
+      <div class="weui-cells">
+        <div class="weui-cell" v-for="(item,index) in products">
+          <div class="weui-cell__hd"><p>{{item.id}}:</p></div>
+          <div class="weui-cell__bd">
+            <input class="weui-input" pattern="[0-9]*" type="number" style="width: 60px;float: right" v-model.trim="products[index].count">
+          </div>
+          <div class="weui-cell__ft">
+            <a href="javascript:;" class="weui-btn weui-btn_mini weui-btn_warn" @click="delProducts(index)">删除</a>
+          </div>
+        </div>
+      </div>
+      <!--订单辅料部分-->
+      <div class="weui-cells__title">订单辅料</div>
+      <div class="weui-cells">
+        <div class="weui-cell" v-for="(item,index) in accessories">
+          <div class="weui-cell__hd"><p>{{item.id}}:</p></div>
+          <div class="weui-cell__bd">
+            <input class="weui-input" pattern="[0-9]*" type="number" style="width: 60px;float: right" v-model.trim="accessories[index].count">
+          </div>
+          <div class="weui-cell__ft">
+            <a href="javascript:;" class="weui-btn weui-btn_mini weui-btn_warn" @click="delAccessories(index)">删除</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--选择商品部分（遮罩层）-->
+    <div id="products_data" class="weui-popup__container">
+      <div class="weui-popup__overlay"></div>
+      <div class="weui-popup__modal">
+        <header>
+          <h3>选择商品</h3>
+        </header>
+        <div class="weui-cells">
+          <div class="weui-cell" v-for="(item,index) in productsData">
+            <div class="weui-cell__bd">
+              <p>{{index+1}}.{{item.id}}</p>
+            </div>
+            <div class="weui-cell__ft">
+              <a href="javascript:;" class="weui-btn weui-btn_mini weui-btn_plain-primary" @click="addProducts(index)">选择</a>
+            </div>
+          </div>
+        </div>
+        <a href="javascript:;" class="close-popup weui-btn weui-btn_primary" data-target="">关 闭</a>
+      </div>
+    </div>
+    <!--选择辅料部分（遮罩层）-->
+    <div id="accessories_data" class="weui-popup__container">
+      <div class="weui-popup__overlay"></div>
+      <div class="weui-popup__modal">
+        <header>
+          <h3>选择商品</h3>
+        </header>
+        <div class="weui-cells">
+          <div class="weui-cell" v-for="(item,index) in accessoriesData">
+            <div class="weui-cell__bd">
+              <p>{{index+1}}.{{item.id}}</p>
+            </div>
+            <div class="weui-cell__ft">
+              <a href="javascript:;" class="weui-btn weui-btn_mini weui-btn_plain-primary" @click="addAccessories(index)">选择</a>
+            </div>
+          </div>
+        </div>
+        <a href="javascript:;" class="close-popup weui-btn weui-btn_primary" data-target="">关 闭</a>
+      </div>
+    </div>
 
     <div class="weui-cells weui-cells_form">
       <div class="weui-cell">
@@ -132,7 +136,7 @@
         </div>
       </div>
     </div>
-    <button type="submit" class="weui-btn weui-btn_primary weui-flex__item " v-if="receiver_name&&receiver_mobile&&receiver_province&&receiver_city&&receiver_district&&receiver_address&&receiver_zip" @click="onSubmit">提交信息</button>
+    <button type="submit" class="weui-btn weui-btn_primary weui-flex__item " v-if="receiver_name&&receiver_mobile&&receiver_province&&receiver_city&&receiver_district&&receiver_address&&receiver_zip&&products&&accessories" @click="onSubmit">提交信息</button>
     <button type="submit" class="weui-btn weui-btn_primary weui-flex__item weui-btn_disabled" v-else>提交信息</button>
   </div>
 </template>
@@ -141,8 +145,39 @@
     name: 'message',
     data () {
       return {
-        products: {"id":[],"count":[]},
-        accessories: {"id":[],"count":[]},
+        //商品数据
+        productsData: [
+          {"id":"方罐肉脯","count":1},
+          {"id":"嗑了么黑南瓜子","count":1},
+          {"id":"三川黑南瓜子","count":1},
+          {"id":"冰溪葵瓜子","count":1},
+          {"id":"波波葵瓜子","count":1},
+          {"id":"蛋解葵瓜子","count":1},
+          {"id":"婚礼葵瓜子","count":1},
+          {"id":"嘉壹度葵瓜子","count":1},
+          {"id":"杰记葵瓜子","count":1},
+          {"id":"嗑了么五香味葵瓜子","count":1},
+          {"id":"拉拉葵瓜子","count":1},
+          {"id":"领投会葵瓜子","count":1},
+          {"id":"民生葵瓜子","count":1},
+          {"id":"牛首山（黄）葵瓜子","count":1},
+          {"id":"牛首山（蓝）葵瓜子","count":1},
+          {"id":"青音葵瓜子","count":1},
+          {"id":"软软葵瓜子","count":1},
+          {"id":"十三妹葵瓜子","count":1},
+          {"id":"小狗钱钱葵瓜子","count":1},
+          {"id":"硬腿子葵瓜子","count":1},
+          {"id":"足球葵瓜子","count":1},
+          {"id":"嗑了么原味葵瓜子","count":1},
+          {"id":"嗑了么圆罐肉脯","count":1},
+        ],
+        //辅料数据
+        accessoriesData: [
+          {"id":"纸箱","count":1},
+          {"id":"手拎袋","count":1},
+        ],
+        products:[],
+        accessories:[],
         receiver_name: '',
         receiver_mobile: '',
         receiver_address: '',
@@ -157,29 +192,21 @@
 
     },
     methods: {
-      productsPop () {
-        $('.products:first').clone(true).appendTo('.productsList');
-        $('.products_count:first').clone(true).appendTo('.products_countList');
+      //添加商品功能
+      addProducts (i) {
+        this.products.push(this.productsData[i]);
       },
-      productsDelete () {
-        if($('.products').length>1 && $('.products_count').length>1){
-          $('.products:last').remove();
-          $('.products_count:first').remove();
-        }else{
-            return;
-        }
+      //删除商品功能
+      delProducts (i) {
+        this.products.splice(i,1);
       },
-      accessoriesPop () {
-        $('.accessories:first').clone(true).appendTo('.accessoriesList');
-        $('.accessories_count:first').clone(true).appendTo('.accessories_countList');
+      //添加辅料功能
+      addAccessories (i) {
+        this.accessories.push(this.accessoriesData[i]);
       },
-      accessoriesDelete () {
-        if($('.accessories').length>1 && $('.accessories_count').length>1){
-          $('.accessories:last').remove();
-          $('.accessories_count:first').remove();
-        }else{
-          return;
-        }
+      //删除辅料功能
+      delAccessories (i) {
+        this.accessories.splice(i,1);
       },
       //订单提交功能
       onSubmit () {
