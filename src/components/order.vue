@@ -92,7 +92,8 @@
             <div class="weui-cell__bd">
               <p>收货人：{{item.receiver_name}}<br/>
                 收货人电话：{{item.receiver_phone}}<br/>
-                收货地址：{{item.receiver_province+item.receiver_city+item.receiver_district}}
+                省市区：{{item.receiver_province+item.receiver_city+item.receiver_district}}<br/>
+                街道地址：{{item.receiver_address}}
               </p>
             </div>
             <div class="weui-cell__ft">

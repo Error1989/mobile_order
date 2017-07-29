@@ -5,10 +5,10 @@
         <h3>查询订单</h3>
       </header>
 
-      <div class="weui-cells" v-for="item in searchData">
+      <div class="weui-cells" v-for="(item,index) in searchData">
         <div class="weui-cell">
             <div class="weui-cell__bd">
-              <p>{{item.id}}.{{item.receiver_province+item.receiver_city+item.receiver_district}}</p>
+              <p>{{index+1}}.{{item.receiver_province+item.receiver_city+item.receiver_district}}</p>
               <p class="weui-media-box__desc">收货人：{{item.receiver_name}}</p>
               <p class="weui-media-box__desc">收货人电话：{{item.receiver_mobile}}</p>
               <p class="weui-media-box__desc">下单时间：{{item.update_time}}</p>

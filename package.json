@@ -11,6 +11,7 @@
     "lint": "eslint --ext .js,.vue src"
   },
   "dependencies": {
+    "distpicker": "^2.0.0",
     "vue": "^2.3.3",
     "vue-infinite-scroll": "^2.0.1",
     "vue-lazyload": "^1.0.5",

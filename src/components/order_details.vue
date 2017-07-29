@@ -8,7 +8,7 @@
         <div class="weui-cells__title">订单状态</div>
         <div class="weui-cell" >
           <div class="weui-cell__bd">
-            <p>订单编号：{{detailsData.id}}</p>
+            <p>订单ID：{{detailsData.id}}</p>
           </div>
           <div class="weui-cell__ft"></div>
         </div>
@@ -73,7 +73,6 @@
             access_token:window.localStorage.getItem('access_token'),
           }).then(response=>{
             let res=response.data;
-            console.log(res.data);
             this.detailsData=res.data;
             this.loading = false;
           })
