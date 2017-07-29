@@ -120,7 +120,7 @@ Vue.http.interceptors.push((request, next) => {
     Vue.http.headers.common['Authorization'] = 'Bearer ' + window.localStorage.getItem('如果access_token存在');//如果access_token存在，就在请求头中加入access_token
   }
   next((response) => {
-    if (response.data.result == -99) {//判断access_token是否过期
+    if (response.result == -99) {//判断access_token是否过期
       window.localStorage.removeItem('access_token');//把过期的access_token清空
       window.localStorage.removeItem('customerId');//把customerId清空
       this.$router.push({path:'/login'})//跳转到登录页

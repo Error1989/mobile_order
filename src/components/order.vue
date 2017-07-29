@@ -13,7 +13,7 @@
       <div class="weui-cells__title">订单商品</div>
       <div class="weui-cells">
         <div class="weui-cell" v-for="(item,index) in products">
-          <div class="weui-cell__hd"><p>{{item.id}}:</p></div>
+          <div class="weui-cell__hd"><p>{{item.name}}:</p></div>
           <div class="weui-cell__bd">
             <input class="weui-input" pattern="[0-9]*" type="number" style="width: 60px;float: right" v-model.trim="products[index].count">
           </div>
@@ -26,7 +26,7 @@
       <div class="weui-cells__title">订单辅料</div>
       <div class="weui-cells">
         <div class="weui-cell" v-for="(item,index) in accessories">
-          <div class="weui-cell__hd"><p>{{item.id}}:</p></div>
+          <div class="weui-cell__hd"><p>{{item.name}}:</p></div>
           <div class="weui-cell__bd">
             <input class="weui-input" pattern="[0-9]*" type="number" style="width: 60px;float: right" v-model.trim="accessories[index].count">
           </div>
@@ -46,7 +46,7 @@
         <div class="weui-cells">
           <div class="weui-cell" v-for="(item,index) in productsData">
             <div class="weui-cell__bd">
-              <p>{{index+1}}.{{item.id}}</p>
+              <p>{{index+1}}.{{item.name}}</p>
             </div>
             <div class="weui-cell__ft">
               <a href="javascript:;" class="weui-btn weui-btn_mini weui-btn_plain-primary" @click="addProducts(index)">选择</a>
@@ -61,15 +61,42 @@
       <div class="weui-popup__overlay"></div>
       <div class="weui-popup__modal">
         <header>
-          <h3>选择商品</h3>
+          <h3>选择辅料</h3>
         </header>
         <div class="weui-cells">
           <div class="weui-cell" v-for="(item,index) in accessoriesData">
             <div class="weui-cell__bd">
-              <p>{{index+1}}.{{item.id}}</p>
+              <p>{{index+1}}.{{item.name}}</p>
             </div>
             <div class="weui-cell__ft">
               <a href="javascript:;" class="weui-btn weui-btn_mini weui-btn_plain-primary" @click="addAccessories(index)">选择</a>
+            </div>
+          </div>
+        </div>
+        <a href="javascript:;" class="close-popup weui-btn weui-btn_primary" data-target="">关 闭</a>
+      </div>
+    </div>
+
+    <div style="text-align: center">
+      <a href="javascript:;" class="open-popup weui-btn weui-btn_mini weui-btn_plain-primary" data-target="#address_data">选择收货人及地址信息</a>
+    </div>
+    <!--选择收货人及地址部分（遮罩层）-->
+    <div id="address_data" class="weui-popup__container">
+      <div class="weui-popup__overlay"></div>
+      <div class="weui-popup__modal">
+        <header>
+          <h3>选择收货人及地址</h3>
+        </header>
+        <div class="weui-cells">
+          <div class="weui-cell" v-for="(item,index) in addressData">
+            <div class="weui-cell__bd">
+              <p>收货人：{{item.receiver_name}}<br/>
+                收货人电话：{{item.receiver_phone}}<br/>
+                收货地址：{{item.receiver_province+item.receiver_city+item.receiver_district}}
+              </p>
+            </div>
+            <div class="weui-cell__ft">
+              <a href="javascript:;" class="weui-btn weui-btn_mini weui-btn_plain-primary" @click="addAddress(index)">选择</a>
             </div>
           </div>
         </div>
@@ -90,7 +117,7 @@
           <input class="weui-input" type="tel" pattern="[0-9]*" placeholder="请输入收货人的手机号" v-model.trim="receiver_mobile">
         </div>
       </div>
-      <div data-toggle="distpicker">
+      <div data-toggle="distpicker" id="distpicker3">
         <div class="weui-cell">
           <div class="weui-cell__hd"><label class="weui-label">省：</label></div>
 
@@ -146,36 +173,11 @@
     data () {
       return {
         //商品数据
-        productsData: [
-          {"id":"方罐肉脯","count":1},
-          {"id":"嗑了么黑南瓜子","count":1},
-          {"id":"三川黑南瓜子","count":1},
-          {"id":"冰溪葵瓜子","count":1},
-          {"id":"波波葵瓜子","count":1},
-          {"id":"蛋解葵瓜子","count":1},
-          {"id":"婚礼葵瓜子","count":1},
-          {"id":"嘉壹度葵瓜子","count":1},
-          {"id":"杰记葵瓜子","count":1},
-          {"id":"嗑了么五香味葵瓜子","count":1},
-          {"id":"拉拉葵瓜子","count":1},
-          {"id":"领投会葵瓜子","count":1},
-          {"id":"民生葵瓜子","count":1},
-          {"id":"牛首山（黄）葵瓜子","count":1},
-          {"id":"牛首山（蓝）葵瓜子","count":1},
-          {"id":"青音葵瓜子","count":1},
-          {"id":"软软葵瓜子","count":1},
-          {"id":"十三妹葵瓜子","count":1},
-          {"id":"小狗钱钱葵瓜子","count":1},
-          {"id":"硬腿子葵瓜子","count":1},
-          {"id":"足球葵瓜子","count":1},
-          {"id":"嗑了么原味葵瓜子","count":1},
-          {"id":"嗑了么圆罐肉脯","count":1},
-        ],
+        productsData: [],
         //辅料数据
-        accessoriesData: [
-          {"id":"纸箱","count":1},
-          {"id":"手拎袋","count":1},
-        ],
+        accessoriesData: [],
+        //收货人及地址信息
+        addressData: [],
         products:[],
         accessories:[],
         receiver_name: '',
@@ -189,7 +191,9 @@
       }
     },
     mounted () {
-
+      this.getProductsData();
+      this.getAccessoriesData();
+      this.getAddressData();
     },
     methods: {
       //添加商品功能
@@ -207,6 +211,22 @@
       //删除辅料功能
       delAccessories (i) {
         this.accessories.splice(i,1);
+      },
+      //添加收货人及地址信息
+      addAddress (i) {
+        this.receiver_name = this.addressData[i].receiver_name;
+        this.receiver_mobile = this.addressData[i].receiver_phone;
+        this.receiver_province = this.addressData[i].receiver_province;
+        this.receiver_city = this.addressData[i].receiver_city
+        this.receiver_district = this.addressData[i].receiver_district;
+        this.receiver_address = this.addressData[i].receiver_address;
+        this.receiver_zip = this.addressData[i].receiver_zip;
+        $("#distpicker3").distpicker('destroy');
+        $("#distpicker3").distpicker({
+          province: this.receiver_province,
+          city: this.receiver_city,
+          district: this.receiver_district
+        });
       },
       //订单提交功能
       onSubmit () {
@@ -229,9 +249,37 @@
         },(error) => {
           alert('提交失败')
         })
-
-
-      }
+      },
+      //获取商品的数据（遮罩层）
+      getProductsData () {
+        this.$http.post('http://www.sikedaodi.com/jikebang/api/web/index.php?r=product/list',{
+          customerId:window.localStorage.getItem('customerId'),
+          access_token:window.localStorage.getItem('access_token'),
+        }).then(response=>{
+          let res = response.data;
+          this.productsData=res.data;
+        })
+      },
+      //获取辅料的数据（遮罩层）
+      getAccessoriesData () {
+        this.$http.post('http://www.sikedaodi.com/jikebang/api/web/index.php?r=product/accessory-list',{
+          customerId:window.localStorage.getItem('customerId'),
+          access_token:window.localStorage.getItem('access_token'),
+        }).then(response=>{
+          let res = response.data;
+          this.accessoriesData=res.data;
+        })
+      },
+      //获取收货人及地址的数据（遮罩层）
+      getAddressData () {
+        this.$http.post('http://www.sikedaodi.com/jikebang/api/web/index.php?r=customer/address-list',{
+          customerId:window.localStorage.getItem('customerId'),
+          access_token:window.localStorage.getItem('access_token'),
+        }).then(response=>{
+          let res = response.data;
+          this.addressData=res.data;
+        })
+      },
     },
   }
 </script>
@@ -250,9 +298,6 @@
     font-size: 25px;
     text-align: center;
     font-family: "微软雅黑";
-  }
-  .products,.products_count,.accessories,.accessories_count {
-    margin-bottom: 5px;
   }
   button.weui-btn {
     width: 70%;
