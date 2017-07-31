@@ -158,14 +158,14 @@
       <div class="weui-cells weui-cells_form">
         <div class="weui-cell">
           <div class="weui-cell__bd">
-            <textarea class="weui-textarea" placeholder="请在此处输入备注信息" rows="3" v-model="remark"></textarea>
+            <textarea class="weui-textarea" placeholder="请在此处输入备注信息（可选）" rows="3" v-model="remark"></textarea>
             <div class="weui-textarea-counter"><span>0</span>/200</div>
           </div>
         </div>
       </div>
     </div>
     <button type="submit" class="weui-btn weui-btn_primary weui-flex__item " v-if="receiver_name&&receiver_mobile&&receiver_province&&receiver_city&&receiver_district&&receiver_address&&receiver_zip&&products&&accessories" @click="onSubmit">提交信息</button>
-    <button type="submit" class="weui-btn weui-btn_primary weui-flex__item weui-btn_disabled" v-else>提交信息</button>
+    <button type="submit" class="weui-btn weui-btn_primary weui-flex__item weui-btn_disabled" v-else>提交订单</button>
   </div>
 </template>
 <script>

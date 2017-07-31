@@ -15,8 +15,8 @@
         <input class="weui-input" type="password" pattern="[0-9]*" placeholder="请输入您的密码" v-model.trim="password">
       </div>
     </div>
-    <button type="submit" class="weui-btn weui-btn_primary weui-flex__item " v-if="phone&&password" @click="onLogin">登录</button>
-    <button type="submit" class="weui-btn weui-btn_primary weui-flex__item weui-btn_disabled" v-else>登录</button>
+    <button type="submit" class="weui-btn weui-btn_primary weui-flex__item " v-if="phone&&password" @click="onLogin">登 录</button>
+    <button type="submit" class="weui-btn weui-btn_primary weui-flex__item weui-btn_disabled" v-else>登 录</button>
   </div>
 </template>
 
