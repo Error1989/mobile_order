@@ -8,14 +8,14 @@
       <!--banner图片-->
       <div class="banner"><img src="../assets/img/banner2.jpg" alt=""></div>
 
-      <a @click="order" class="weui-grid js_grid">
+      <router-link to="/order" class="weui-grid js_grid">
         <div class="weui-grid__icon">
           <img src="../assets/img/1.png" alt="新增订单">
         </div>
         <p class="weui-grid__label">
           新增订单
         </p>
-      </a>
+      </router-link>
       <router-link to="/product" class="weui-grid js_grid">
         <div class="weui-grid__icon">
           <img src="../assets/img/2.png" alt="商品列表">
@@ -80,10 +80,6 @@
             window.localStorage.removeItem('customerId');//清空customerId
             window.localStorage.removeItem('access_token');//清空access_token
             this.$router.push({path:'/login'});
-          },
-          order () {
-            this.$router.push({path:'/order'});
-            location.reload()
           },
 
         }
