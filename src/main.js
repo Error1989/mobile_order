@@ -55,15 +55,15 @@ let router = new VueRouter({
       },
       component: order
     },
-    {
-      path: '/product',
-      name: 'product',
-      meta: {
-        // 添加该字段，表示进入这个路由是需要登录的
-        requireAuth: true,
-      },
-      component: product
-    },
+    // {
+    //   path: '/product',
+    //   name: 'product',
+    //   meta: {
+    //     // 添加该字段，表示进入这个路由是需要登录的
+    //     requireAuth: true,
+    //   },
+    //   component: product
+    // },
     // {
     //   path: '/accessory',
     //   name: 'accessory',

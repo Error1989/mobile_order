@@ -16,14 +16,14 @@
           新增订单
         </p>
       </router-link>
-      <router-link to="/product" class="weui-grid js_grid">
-        <div class="weui-grid__icon">
-          <img src="../assets/img/2.png" alt="商品列表">
-        </div>
-        <p class="weui-grid__label">
-          商品列表
-        </p>
-      </router-link>
+      <!--<router-link to="/product" class="weui-grid js_grid">-->
+        <!--<div class="weui-grid__icon">-->
+          <!--<img src="../assets/img/2.png" alt="商品列表">-->
+        <!--</div>-->
+        <!--<p class="weui-grid__label">-->
+          <!--商品列表-->
+        <!--</p>-->
+      <!--</router-link>-->
       <!--<router-link to="/accessory" class="weui-grid js_grid">-->
         <!--<div class="weui-grid__icon">-->
           <!--<img src="../assets/img/3.png" alt="辅料列表">-->
