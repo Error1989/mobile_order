@@ -1,7 +1,7 @@
 <template>
   <div id="message">
     <header>
-      <router-link to="/navcom" style="float: left;margin-left: 10%;line-height: 40px;color: #ffffff;font-weight: 400;font-size: 25px;"><<</router-link>
+      <!--<router-link to="/navcom" style="float: left;margin-left: 10%;line-height: 40px;color: #ffffff;font-weight: 400;font-size: 25px;"><<</router-link>-->
       <h3>新增订单</h3>
     </header>
     <div class="weui-cells weui-cells_form">
@@ -77,7 +77,7 @@
       </div>
     </div>
 
-    <div style="text-align: center">
+    <div style="text-align: center;margin-top: 15px;">
       <a href="javascript:;" class="open-popup weui-btn weui-btn_mini weui-btn_plain-primary" data-target="#address_data">选择收货人及地址信息</a>
     </div>
     <!--选择收货人及地址部分（遮罩层）-->
@@ -308,5 +308,9 @@
   }
   button {
     margin-top: 50px;
+  }
+  .close-popup {
+    width: 70%;
+    margin-top: 20px;
   }
 </style>

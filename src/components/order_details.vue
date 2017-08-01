@@ -1,7 +1,7 @@
 <template>
     <div id="order_details">
       <header>
-        <router-link to="/search" style="float: left;margin-left: 10%;line-height: 40px;color: #ffffff;font-weight: 400;font-size: 25px;"><<</router-link>
+        <!--<router-link to="/search" style="float: left;margin-left: 10%;line-height: 40px;color: #ffffff;font-weight: 400;font-size: 25px;"><<</router-link>-->
         <h3>订单详情</h3>
       </header>
       <div class="weui-cells">
