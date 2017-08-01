@@ -195,6 +195,9 @@
       this.getProductsData();
       this.getAccessoriesData();
       this.getAddressData();
+      $("#distpicker3").distpicker({
+
+      });
     },
     methods: {
       //添加商品功能
