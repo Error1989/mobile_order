@@ -1,6 +1,6 @@
-# mobile
+# mobile_order
 
-> A Vue.js project
+> 前端部分使用WEUI+Vue2.0,由本人独自完成。后端部分由同事提供接口和数据。
 
 ## Build Setup
 
