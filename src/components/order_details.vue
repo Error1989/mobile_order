@@ -1,12 +1,12 @@
 <template>
-    <div id="order_details">
+    <div id="order_details" @touchmove="firstStyle" @mouseover="firstStyle">
       <header>
         <!--<router-link to="/search" style="float: left;margin-left: 10%;line-height: 40px;color: #ffffff;font-weight: 400;font-size: 25px;"><<</router-link>-->
         <h3>订单详情</h3>
       </header>
-      <div class="weui-cells">
-        <div class="weui-cells__title">订单状态</div>
-        <div class="weui-cell" >
+      <div class="weui-cells" style="margin-top: 0px;">
+        <div class="banner"><img src="../assets/img/banner2.jpg" alt=""></div>
+        <div class="weui-cell">
           <div class="weui-cell__bd">
             <p>订单ID：{{detailsData.id}}</p>
           </div>
@@ -14,24 +14,24 @@
         </div>
         <div class="weui-cell" >
           <div class="weui-cell__bd">
-            <p>下单时间：{{detailsData.update_time}}</p>
+            <p>创建时间：{{detailsData.update_time}}</p>
           </div>
           <div class="weui-cell__ft"><p style="color: #ff0000">{{detailsData.order_status}}</p></div>
         </div>
-        <div class="weui-cells__title">订单商品</div>
+        <div class="weui-cells__title"><span>商品名称</span><span style="float: right">数量</span></div>
         <div class="weui-cell" v-for="item in detailsData.products">
           <div class="weui-cell__bd">
             <p>{{item.item_name}}</p>
           </div>
-          <div class="weui-cell__ft">{{item.count}}</div>
+          <div class="weui-cell__ft" style="color: #000000">{{item.count}}</div>
         </div>
-        <div class="weui-cells__title">订单辅料</div>
-        <div class="weui-cell" v-for="item in detailsData.accessories">
-          <div class="weui-cell__bd">
-            <p>{{item.item_name}}</p>
-          </div>
-          <div class="weui-cell__ft">{{item.count}}</div>
-        </div>
+        <!--<div class="weui-cells__title"><span>辅料名称</span><span style="float: right">数量</span></div>-->
+        <!--<div class="weui-cell" v-for="item in detailsData.accessories">-->
+          <!--<div class="weui-cell__bd">-->
+            <!--<p>{{item.item_name}}</p>-->
+          <!--</div>-->
+          <!--<div class="weui-cell__ft" style="color: #000000">{{item.count}}</div>-->
+        <!--</div>-->
         <div class="weui-cells__title">收货人及地址信息</div>
         <div class="weui-cell">
           <div class="weui-cell__bd">
@@ -44,6 +44,32 @@
           </div>
           <div class="weui-cell__ft"></div>
         </div>
+
+        <div class="weui-cells__title">物流信息</div>
+        <div class="weui-cell" v-if="expressData.Success">
+          <div class="weui-cell__bd">
+            <p>快递公司：{{expressData.ShipperCode}}</p>
+            <p>快递单号：{{expressData.LogisticCode}}</p>
+            <p>快递状态：<span style="color: #00b7ff">{{expressData.StateName}}</span></p>
+          </div>
+          <div class="weui-cell__ft"></div>
+        </div>
+        <div class="weui-cell" v-if="!expressData.Success">
+          <div class="weui-cell__bd">
+            <p>快递状态：<span style="color: #00b7ff">未接收</span></p>
+          </div>
+          <div class="weui-cell__ft"></div>
+        </div>
+
+        <div class="weui-cells__title" v-if="expressData.Success">物流追踪</div>
+        <div class="weui-cell" v-if="expressData.Success">
+          <div class="weui-cell__bd">
+            <p style="color: #999;font-size: 14px;" v-for="item in expressData.Traces" ref="express">
+              >> {{item.AcceptTime}}<br/>{{item.AcceptStation}} <span v-if="item.Remark">({{item.Remark}})</span>
+            </p>
+          </div>
+          <div class="weui-cell__ft"></div>
+        </div>
       </div>
       <div style="text-align: center">
         <img src="./../assets/loading.gif" v-if="loading">
@@ -52,6 +78,7 @@
 </template>
 
 <script>
+  import Vue from 'vue'
     export default {
         name: 'order_details',
         data () {
@@ -59,13 +86,16 @@
               loading:false,
               busy:true,
               detailsData:[],
+              expressData:[],
             }
         },
       mounted () {
         this.getOrder_details();
+        this.getExpressData();
       },
       methods: {
-        getOrder_details() {
+        //获取订单的基本信息
+        getOrder_details () {
           this.loading = true;
           this.$http.post('http://www.sikedaodi.com/jikebang/api/web/index.php?r=customer/order-detail',{
             order_id:this.$route.query.id,
@@ -76,9 +106,37 @@
             this.detailsData=res.data;
             this.loading = false;
           })
-        }
+        },
+        //获取订单的物流信息
+        getExpressData () {
+          this.loading = true;
+          this.$http.post('http://www.sikedaodi.com/jikebang/api/web/index.php?r=common/express-info',{
+            order_id:26,
+            customerId:window.localStorage.getItem('customerId'),
+            access_token:window.localStorage.getItem('access_token'),
+          }).then(response=>{
+            if (response.data.result === 1) {
+              let res=response.data;
+              this.expressData=res.data;
+              this.expressData.Traces.reverse();
+              this.loading = false;
+            }else {
+              return;
+            }
+          })
+        },
+        //改变物流追踪最后一条结果的颜色
+        firstStyle () {
+          Vue.nextTick(() => {
+              if (this.expressData.Success) {
+                let item = this.$refs.express;
+                item[0].style.color = '#00b7ff';
+              }
+          })
+        },
       }
     }
+
 </script>
 
 <style scoped>
@@ -96,4 +154,16 @@
     text-align: center;
     font-family: "微软雅黑";
   }
+  .banner {
+    width: 100%;
+    height: auto;
+  }
+  .banner img {
+    max-width:100%;
+    height:auto;
+  }
+  p {
+    margin-bottom: 5px;
+  }
+
 </style>

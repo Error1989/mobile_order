@@ -8,7 +8,11 @@
       <div class="weui-cell__bd">
         <input class="weui-input" type="tel" pattern="[0-9]*" placeholder="请输入您的手机号" v-model.trim="phone">
       </div>
+      <div class="weui-cell__ft">
+        <button class="weui-vcode-btn" @click="getPhone" style="font-size: 15px;">最近登录</button>
+      </div>
     </div>
+
     <div class="weui-cell">
       <div class="weui-cell__hd"><label class="weui-label">密码：</label></div>
       <div class="weui-cell__bd">
@@ -33,9 +37,19 @@ export default{
 
   },
   methods: {
+    //获取最近一次登录的账号
+    getPhone () {
+      if (window.localStorage.getItem('customerPhone') ) {
+        this.phone = window.localStorage.getItem('customerPhone');
+      } else {
+        alert('登录信息不存在或已过期，请手动输入');
+      }
+
+    },
     //登录功能
     onLogin () {
       let a = this.$router;
+      let customerPhone = this.phone;
       $.ajax({
         type:'post',
         url:'http://www.sikedaodi.com/jikebang/api/web/index.php?r=auth/login',
@@ -43,11 +57,12 @@ export default{
         data:{phone:this.phone, password:this.password,},
         async:false,
         success:function (response) {
+          //将最近一次登录的账号保存在localStorage中
+          window.localStorage.setItem('customerPhone', customerPhone);
+        //路由跳转部分
         if(response.result==1){
-            alert(response.msg);
             const customerId = response.data.id;
             const access_token = response.data.access_token;
-
             //将用户id和access_token保存在localStorage中
             window.localStorage.setItem('customerId', customerId);
             window.localStorage.setItem('access_token', access_token);
@@ -60,8 +75,7 @@ export default{
         error:function (error) {
           alert('网络异常')
         }
-      })
-
+      });
     }
   }
 }
@@ -82,7 +96,7 @@ header h3{
 .weui-btn {
   width: 70%;
 }
-button {
+.weui-btn_primary {
   margin-top: 50px;
 }
 </style>

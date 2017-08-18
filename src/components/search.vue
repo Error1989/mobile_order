@@ -11,7 +11,7 @@
               <p>{{index+1}}.{{item.receiver_province+item.receiver_city+item.receiver_district}}</p>
               <p class="weui-media-box__desc">收货人：{{item.receiver_name}}</p>
               <p class="weui-media-box__desc">收货人电话：{{item.receiver_mobile}}</p>
-              <p class="weui-media-box__desc">下单时间：{{item.update_time}}</p>
+              <p class="weui-media-box__desc">创建时间：{{item.update_time}}</p>
             </div>
             <div class="weui-cell__ft" style="text-align: center">
               <p style="color: #ff0000">{{item.order_status}}</p>

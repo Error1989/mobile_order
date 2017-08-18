@@ -5,36 +5,36 @@
       <h3>新增订单</h3>
     </header>
     <div class="weui-cells weui-cells_form">
-      <div style="text-align: center">
+      <div style="text-align: center;margin-top: 15px;">
         <a href="javascript:;" class="open-popup weui-btn weui-btn_mini weui-btn_plain-primary" data-target="#products_data" style="margin-right: 15px">选择商品</a>
-        <a href="javascript:;" class="open-popup weui-btn weui-btn_mini weui-btn_plain-primary" data-target="#accessories_data" style="margin-left: 15px">选择辅料</a>
+        <!--<a href="javascript:;" class="open-popup weui-btn weui-btn_mini weui-btn_plain-primary" data-target="#accessories_data" style="margin-left: 15px">选择辅料</a>-->
       </div>
-      <!--订单商品部分-->
-      <div class="weui-cells__title">订单商品</div>
+      <!--商品信息部分-->
+      <div class="weui-cells__title">商品名称/数量</div>
       <div class="weui-cells">
         <div class="weui-cell" v-for="(item,index) in products">
-          <div class="weui-cell__hd"><p>{{item.name}}:</p></div>
+          <div class="weui-cell__hd"><p>{{item.name}}</p></div>
           <div class="weui-cell__bd">
-            <input class="weui-input" pattern="[0-9]*" type="number" style="width: 60px;float: right" v-model.trim="products[index].count">
+            <input class="weui-input" pattern="[0-9]*" type="number" style="float: right;text-align: center;border: 1px solid #d9d9d9;border-radius: 5px;width: 45px;" v-model.trim="products[index].count">
           </div>
-          <div class="weui-cell__ft">
+          <div class="weui-cell__ft" style="margin-left: 10%">
             <a href="javascript:;" class="weui-btn weui-btn_mini weui-btn_warn" @click="delProducts(index)">删除</a>
           </div>
         </div>
       </div>
-      <!--订单辅料部分-->
-      <div class="weui-cells__title">订单辅料</div>
-      <div class="weui-cells">
-        <div class="weui-cell" v-for="(item,index) in accessories">
-          <div class="weui-cell__hd"><p>{{item.name}}:</p></div>
-          <div class="weui-cell__bd">
-            <input class="weui-input" pattern="[0-9]*" type="number" style="width: 60px;float: right" v-model.trim="accessories[index].count">
-          </div>
-          <div class="weui-cell__ft">
-            <a href="javascript:;" class="weui-btn weui-btn_mini weui-btn_warn" @click="delAccessories(index)">删除</a>
-          </div>
-        </div>
-      </div>
+      <!--辅料信息部分-->
+      <!--<div class="weui-cells__title">辅料名称/数量</div>-->
+      <!--<div class="weui-cells">-->
+        <!--<div class="weui-cell" v-for="(item,index) in accessories">-->
+          <!--<div class="weui-cell__hd"><p>{{item.name}}</p></div>-->
+          <!--<div class="weui-cell__bd">-->
+            <!--<input class="weui-input" pattern="[0-9]*" type="number" style="float: right;text-align: center;border: 1px solid #d9d9d9;border-radius: 5px;width: 45px;" v-model.trim="accessories[index].count">-->
+          <!--</div>-->
+          <!--<div class="weui-cell__ft" style="margin-left: 10%">-->
+            <!--<a href="javascript:;" class="weui-btn weui-btn_mini weui-btn_warn" @click="delAccessories(index)">删除</a>-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
     </div>
     <!--选择商品部分（遮罩层）-->
     <div id="products_data" class="weui-popup__container">
@@ -49,7 +49,7 @@
               <p>{{index+1}}.{{item.name}}</p>
             </div>
             <div class="weui-cell__ft">
-              <a href="javascript:;" class="weui-btn weui-btn_mini weui-btn_plain-primary" @click="addProducts(index)">选择</a>
+              <a href="javascript:;" class="weui-btn weui-btn_mini weui-btn_plain-primary" @click.once="addProducts(index)">选择</a>
             </div>
           </div>
         </div>
@@ -69,7 +69,7 @@
               <p>{{index+1}}.{{item.name}}</p>
             </div>
             <div class="weui-cell__ft">
-              <a href="javascript:;" class="weui-btn weui-btn_mini weui-btn_plain-primary" @click="addAccessories(index)">选择</a>
+              <a href="javascript:;" class="weui-btn weui-btn_mini weui-btn_plain-primary" @click.once="addAccessories(index)">选择</a>
             </div>
           </div>
         </div>
@@ -85,7 +85,7 @@
       <div class="weui-popup__overlay"></div>
       <div class="weui-popup__modal">
         <header>
-          <h3>选择收货人及地址</h3>
+          <h3>收货人及地址</h3>
         </header>
         <div class="weui-cells">
           <div class="weui-cell" v-for="(item,index) in addressData">
@@ -164,7 +164,7 @@
         </div>
       </div>
     </div>
-    <button type="submit" class="weui-btn weui-btn_primary weui-flex__item " v-if="receiver_name&&receiver_mobile&&receiver_province&&receiver_city&&receiver_district&&receiver_address&&receiver_zip&&products&&accessories" @click="onSubmit">提交信息</button>
+    <button type="submit" class="weui-btn weui-btn_primary weui-flex__item " v-if="receiver_name&&receiver_mobile&&receiver_province&&receiver_city&&receiver_district&&receiver_address&&receiver_zip&&products" @click="onSubmit">提交信息</button>
     <button type="submit" class="weui-btn weui-btn_primary weui-flex__item weui-btn_disabled" v-else>提交订单</button>
   </div>
 </template>
@@ -179,6 +179,7 @@
         accessoriesData: [],
         //收货人及地址信息
         addressData: [],
+
         products:[],
         accessories:[],
         receiver_name: '',
@@ -202,7 +203,8 @@
     methods: {
       //添加商品功能
       addProducts (i) {
-        this.products.push(this.productsData[i]);
+            this.products.push(this.productsData[i]);
+            alert("选择成功");
       },
       //删除商品功能
       delProducts (i) {
@@ -210,7 +212,8 @@
       },
       //添加辅料功能
       addAccessories (i) {
-        this.accessories.push(this.accessoriesData[i]);
+            this.accessories.push(this.accessoriesData[i]);
+            alert("选择成功");
       },
       //删除辅料功能
       delAccessories (i) {
@@ -231,12 +234,13 @@
           city: this.receiver_city,
           district: this.receiver_district
         });
+        alert("选择成功");
       },
       //订单提交功能
       onSubmit () {
         this.$http.post('http://www.sikedaodi.com/jikebang/api/web/index.php?r=customer/submit-order',{
           products:this.products,
-          accessories:this.accessories,
+          //accessories:this.accessories,
           receiver_name:this.receiver_name,
           receiver_mobile:this.receiver_mobile,
           receiver_address:this.receiver_address,
@@ -249,9 +253,10 @@
           access_token:window.localStorage.getItem('access_token'),
         }).then((response) => {
           alert(response.data.msg);
-          location.reload()
+          //location.reload();
+          this.$router.push({path:'/navcom'});
         },(error) => {
-          alert('提交失败')
+          alert('提交失败');
         })
       },
       //获取商品的数据（遮罩层）

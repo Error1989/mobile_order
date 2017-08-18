@@ -77,8 +77,8 @@
         methods: {
           //退出当前系统
           logout(){
-            window.localStorage.removeItem('customerId');//清空customerId
-            window.localStorage.removeItem('access_token');//清空access_token
+            window.localStorage.removeItem('customerId');
+            window.localStorage.removeItem('access_token');
             this.$router.push({path:'/login'});
           },
 

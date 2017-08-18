@@ -30,7 +30,7 @@ let router = new VueRouter({
   routes: [
     {
       path: '/',
-      redirect:'/login'
+      redirect:'/navcom'
     },
     {
       path: '/login',
@@ -80,7 +80,7 @@ let router = new VueRouter({
         // 添加该字段，表示进入这个路由是需要登录的
         requireAuth: true,
       },
-      component: search
+      component: search,
     },
     {
       path: '/order_details',
@@ -120,9 +120,10 @@ Vue.http.interceptors.push((request, next) => {
     Vue.http.headers.common['Authorization'] = 'Bearer ' + window.localStorage.getItem('如果access_token存在');//如果access_token存在，就在请求头中加入access_token
   }
   next((response) => {
-    if (response.result == -99) {//判断access_token是否过期
-      window.localStorage.removeItem('access_token');//把过期的access_token清空
-      window.localStorage.removeItem('customerId');//把customerId清空
+    if (response.data.result === -99) {//判断access_token是否过期
+      //清空过期的用户登录信息
+      window.localStorage.removeItem('access_token');
+      window.localStorage.removeItem('customerId');
       this.$router.push({path:'/login'})//跳转到登录页
     }else{
       return response;//把response返回给then进行接收
