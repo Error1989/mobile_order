@@ -16,7 +16,7 @@
     <div class="weui-cell">
       <div class="weui-cell__hd"><label class="weui-label">密码：</label></div>
       <div class="weui-cell__bd">
-        <input class="weui-input" type="password" pattern="[0-9]*" placeholder="请输入您的密码" v-model.trim="password">
+        <input class="weui-input" type="password" placeholder="请输入您的密码" v-model.trim="password">
       </div>
     </div>
     <button type="submit" class="weui-btn weui-btn_primary weui-flex__item " v-if="phone&&password" @click="onLogin">登 录</button>

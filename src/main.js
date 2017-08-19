@@ -140,5 +140,5 @@ new Vue({
   el: '#app',
   router,
   template: '<App/>',
-  components: { App, order, product, accessory, search, order_details, navcom, distpicker}
+  components: { App, order, product, accessory, search, order_details, navcom, distpicker, $}
 })

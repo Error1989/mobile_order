@@ -109,7 +109,7 @@
       <div class="weui-cell">
         <div class="weui-cell__hd"><label class="weui-label">姓名：</label></div>
         <div class="weui-cell__bd">
-          <input class="weui-input" type="text" pattern="[0-9]*" placeholder="请输入收货人姓名" v-model.trim="receiver_name">
+          <input class="weui-input" type="text" placeholder="请输入收货人姓名" v-model.trim="receiver_name">
         </div>
       </div>
       <div class="weui-cell">
@@ -145,7 +145,7 @@
       <div class="weui-cell">
         <div class="weui-cell__hd"><label class="weui-label">地址：</label></div>
         <div class="weui-cell__bd">
-          <input class="weui-input" type="text" pattern="[0-9]*" placeholder="请输入收货人的街道地址" v-model="receiver_address">
+          <input class="weui-input" type="text" placeholder="请输入收货人的街道地址" v-model="receiver_address">
         </div>
       </div>
       <div class="weui-cell">
