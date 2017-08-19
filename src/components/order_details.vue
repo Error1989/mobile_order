@@ -111,7 +111,7 @@
         getExpressData () {
           this.loading = true;
           this.$http.post('http://www.sikedaodi.com/jikebang/api/web/index.php?r=common/express-info',{
-            order_id:26,
+            order_id:this.$route.query.id,
             customerId:window.localStorage.getItem('customerId'),
             access_token:window.localStorage.getItem('access_token'),
           }).then(response=>{
