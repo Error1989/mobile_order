@@ -48,7 +48,7 @@
         <div class="weui-cells__title">物流信息</div>
         <div class="weui-cell" v-if="expressData.Success">
           <div class="weui-cell__bd">
-            <p>快递公司：{{expressData.ShipperCode}}</p>
+            <p>快递公司：{{expressData.ShipperName}}</p>
             <p>快递单号：{{expressData.LogisticCode}}</p>
             <p>快递状态：<span style="color: #00b7ff">{{expressData.StateName}}</span></p>
           </div>
@@ -111,7 +111,7 @@
         getExpressData () {
           this.loading = true;
           this.$http.post('http://www.sikedaodi.com/jikebang/api/web/index.php?r=common/express-info',{
-            order_id:this.$route.query.id,
+            order_id:26,
             customerId:window.localStorage.getItem('customerId'),
             access_token:window.localStorage.getItem('access_token'),
           }).then(response=>{
