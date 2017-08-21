@@ -1,7 +1,6 @@
 <template>
     <div id="search">
       <header>
-        <!--<router-link to="/navcom" style="float: left;margin-left: 10%;line-height: 40px;color: #ffffff;font-weight: 400;font-size: 25px;"><<</router-link>-->
         <h3>查询订单</h3>
       </header>
 
@@ -39,6 +38,7 @@
         },
       mounted () {
           this.getSearch();
+
       },
       methods: {
         //获取订单的数据

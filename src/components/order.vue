@@ -1,7 +1,6 @@
 <template>
   <div id="message">
     <header>
-      <!--<router-link to="/navcom" style="float: left;margin-left: 10%;line-height: 40px;color: #ffffff;font-weight: 400;font-size: 25px;"><<</router-link>-->
       <h3>新增订单</h3>
     </header>
     <div class="weui-cells weui-cells_form">
@@ -123,21 +122,21 @@
           <div class="weui-cell__hd"><label class="weui-label">省：</label></div>
 
             <div class="weui-cell__bd">
-              <select class="form-control" style="width: 120px;height:26px" id="receiver_province" v-model="receiver_province"></select>
+              <select class="form-control" style="width: 110px;height:26px;" id="receiver_province" v-model="receiver_province"></select>
             </div>
         </div>
         <div class="weui-cell">
           <div class="weui-cell__hd"><label class="weui-label">市：</label></div>
 
           <div class="weui-cell__bd">
-            <select class="form-control" style="width: 120px;height:26px" id="receiver_city" v-model="receiver_city"></select>
+            <select class="form-control" style="width: 110px;height:26px;" id="receiver_city" v-model="receiver_city"></select>
           </div>
         </div>
         <div class="weui-cell">
           <div class="weui-cell__hd"><label class="weui-label">区：</label></div>
 
           <div class="weui-cell__bd">
-            <select class="form-control" style="width: 120px;height:26px" id="receiver_district" v-model="receiver_district"></select>
+            <select class="form-control" style="width: 110px;height:26px" id="receiver_district" v-model="receiver_district"></select>
           </div>
         </div>
       </div>

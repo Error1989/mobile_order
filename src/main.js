@@ -16,6 +16,8 @@ import VueLazyLoad from 'vue-lazyload'
 import VueRouter from "vue-router"
 import Vuex from 'vuex'
 import VueResource from 'vue-resource'
+import VueScroller from 'vue-scroller'
+Vue.use(VueScroller)
 Vue.use(VueResource)
 Vue.use(VueRouter)
 Vue.use(Vuex)
@@ -26,7 +28,7 @@ Vue.use(VueLazyLoad,{
 
 //路由部分
 let router = new VueRouter({
-  mode: 'history',
+  // mode: 'history',
   routes: [
     {
       path: '/',
