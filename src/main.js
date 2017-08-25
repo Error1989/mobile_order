@@ -28,7 +28,7 @@ Vue.use(VueLazyLoad,{
 
 //路由部分
 let router = new VueRouter({
-  // mode: 'history',
+  mode: 'history',
   routes: [
     {
       path: '/',
