@@ -119,7 +119,7 @@ Vue.http.interceptors.push((request, next) => {
   let access_token = window.localStorage.getItem('access_token');
   let customerId =  window.localStorage.getItem('customerId');
   if (access_token){//判断access_token是否存在
-    Vue.http.headers.common['Authorization'] = 'Bearer ' + window.localStorage.getItem('如果access_token存在');//如果access_token存在，就在请求头中加入access_token
+    Vue.http.headers.common['Authorization'] = 'Bearer ' + window.localStorage.getItem('access_token');//如果access_token存在，就在请求头中加入access_token
   }
   next((response) => {
     if (response.data.result === -99) {//判断access_token是否过期

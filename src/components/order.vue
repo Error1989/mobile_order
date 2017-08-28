@@ -313,6 +313,9 @@
   button {
     margin-top: 50px;
   }
+  .weui-popup__container {
+    top: 60px;
+  }
   .close-popup {
     width: 70%;
     margin-top: 20px;
