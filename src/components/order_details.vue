@@ -63,7 +63,7 @@
         <div class="weui-cells__title" v-if="expressData.Success">物流追踪</div>
         <div class="weui-cell" v-if="expressData.Success">
           <div class="weui-cell__bd">
-            <p style="color: #999;font-size: 14px;" v-for="item in expressData.Traces" ref="express">
+            <p style="color: #999;" v-for="item in expressData.Traces" ref="express">
               >> {{item.AcceptTime}}<br/>{{item.AcceptStation}} <span v-if="item.Remark">({{item.Remark}})</span>
             </p>
           </div>
