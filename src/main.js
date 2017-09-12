@@ -10,14 +10,11 @@ import search from './components/search.vue'
 import order_details from './components/order_details.vue'
 import navcom from './components/navcom.vue'
 import distpicker from 'distpicker'
-import $ from 'jquery'
 import infiniteScroll from 'vue-infinite-scroll'
 import VueLazyLoad from 'vue-lazyload'
 import VueRouter from "vue-router"
 import Vuex from 'vuex'
 import VueResource from 'vue-resource'
-import VueScroller from 'vue-scroller'
-Vue.use(VueScroller)
 Vue.use(VueResource)
 Vue.use(VueRouter)
 Vue.use(Vuex)
@@ -142,5 +139,5 @@ new Vue({
   el: '#app',
   router,
   template: '<App/>',
-  components: { App, order, product, accessory, search, order_details, navcom, distpicker, $}
+  components: { App, order, product, accessory, search, order_details, navcom, distpicker}
 })
