@@ -18,7 +18,7 @@
             </div>
         </div>
       </div>
-          <div v-infinite-scroll="loadMore" infinite-scroll-disabled="busy" infinite-scroll-distance="20" style="text-align: center">
+          <div v-infinite-scroll="loadMore" infinite-scroll-disabled="busy" infinite-scroll-distance="20" style="text-align: center;margin-top: 20px;">
             <img src="./../assets/loading.gif" v-if="loading">
           </div>
     </div>

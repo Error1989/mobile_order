@@ -13,7 +13,7 @@
               <div class="weui-cell__ft">{{item.price}}元</div>
             </div>
           </div>
-          <div style="text-align: center">
+          <div style="text-align: center;margin-top: 20px;">
             <img src="./../assets/loading.gif" v-if="loading">
           </div>
       </div>

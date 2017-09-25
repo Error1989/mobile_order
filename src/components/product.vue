@@ -13,7 +13,7 @@
           <div class="weui-cell__ft"><p style="color: #ff0000">{{item.price}}元</p></div>
         </div>
       </div>
-        <div v-infinite-scroll="loadMore" infinite-scroll-disabled="busy" infinite-scroll-distance="20" style="text-align: center">
+        <div v-infinite-scroll="loadMore" infinite-scroll-disabled="busy" infinite-scroll-distance="20" style="text-align: center;margin-top: 20px;">
           <img src="./../assets/loading.gif" v-if="loading">
         </div>
     </div>

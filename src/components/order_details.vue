@@ -13,7 +13,7 @@
         </div>
         <div class="weui-cell" >
           <div class="weui-cell__bd">
-            <p>创建时间：{{detailsData.update_time}}</p>
+            <p>创建日期：{{detailsData.update_time}}</p>
           </div>
           <div class="weui-cell__ft"><p style="color: #ff0000">{{detailsData.order_status}}</p></div>
         </div>
@@ -70,7 +70,7 @@
           <div class="weui-cell__ft"></div>
         </div>
       </div>
-      <div style="text-align: center">
+      <div style="text-align: center;margin-top: 20px;">
         <img src="./../assets/loading.gif" v-if="loading">
       </div>
     </div>
