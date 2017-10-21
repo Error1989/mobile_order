@@ -99,4 +99,7 @@
   .weui-btn {
     margin-top: 10px;
   }
+  .weui-cells {
+    margin-top:0px;
+  }
 </style>

@@ -5,7 +5,7 @@
     </header>
     <div class="weui-cells weui-cells_form">
       <div style="text-align: center;margin-top: 15px;">
-        <a href="javascript:;" class="open-popup weui-btn weui-btn_mini weui-btn_plain-primary" data-target="#products_data" style="margin-right: 15px">选择商品</a>
+        <a href="javascript:;" class="open-popup weui-btn weui-btn_mini weui-btn_plain-primary" data-target="#products_data">选择商品</a>
         <!--<a href="javascript:;" class="open-popup weui-btn weui-btn_mini weui-btn_plain-primary" data-target="#accessories_data" style="margin-left: 15px">选择辅料</a>-->
       </div>
       <!--商品信息部分-->
