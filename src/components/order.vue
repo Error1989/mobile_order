@@ -4,7 +4,7 @@
       <h3>新增订单</h3>
     </header>
     <div class="weui-cells weui-cells_form">
-      <div style="text-align: center;margin-top: 15px;">
+      <div style="text-align: center;margin-top: 15px;margin-bottom: 10px;">
         <a href="javascript:;" class="open-popup weui-btn weui-btn_mini weui-btn_plain-primary" data-target="#products_data">选择商品</a>
         <!--<a href="javascript:;" class="open-popup weui-btn weui-btn_mini weui-btn_plain-primary" data-target="#accessories_data" style="margin-left: 15px">选择辅料</a>-->
       </div>
@@ -27,7 +27,7 @@
         <!--<div class="weui-cell" v-for="(item,index) in accessories">-->
           <!--<div class="weui-cell__hd"><p>{{item.name}}</p></div>-->
           <!--<div class="weui-cell__bd">-->
-            <!--<input class="weui-input" pattern="[0-9]*" type="number" style="float: right;text-align: center;border: 1px solid #d9d9d9;border-radius: 5px;width: 45px;" v-model.trim="accessories[index].count">-->
+            <!--<input class="weui-input" pattern="[0-9]*" type="number" style="float: right;text-align: center;border: 1px solid #d9d9d9;border-radius: 5px;width: 50px;" v-model.trim="accessories[index].count">-->
           <!--</div>-->
           <!--<div class="weui-cell__ft" style="margin-left: 10%">-->
             <!--<a href="javascript:;" class="weui-btn weui-btn_mini weui-btn_warn" @click="delAccessories(index)">删除</a>-->
@@ -76,7 +76,7 @@
       </div>
     </div>
 
-    <div style="text-align: center;margin-top: 15px;">
+    <div style="text-align: center;margin-top: 40px;margin-bottom: 10px;">
       <a href="javascript:;" class="open-popup weui-btn weui-btn_mini weui-btn_plain-primary" data-target="#address_data">选择收货人及地址信息</a>
     </div>
     <!--选择收货人及地址部分（遮罩层）-->
@@ -316,5 +316,11 @@
   .close-popup {
     width: 70%;
     margin-top: 20px;
+  }
+  .weui-cells {
+    margin-top:0px;
+  }
+  .weui-cell:before {
+    left: 0;
   }
 </style>
