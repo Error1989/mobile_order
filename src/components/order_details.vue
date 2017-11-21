@@ -4,7 +4,7 @@
         <h3>订单详情</h3>
       </header>
       <div class="weui-cells" style="margin-top: 0px;">
-        <div class="banner" style="font-size:0;"><img src="../assets/img/banner2.jpg" alt=""></div>
+        <div class="banner" style="font-size:0;"><img src="../assets/img/banner3.jpg" alt=""></div>
         <div class="weui-cell">
           <div class="weui-cell__bd">
             <p>订单ID：{{detailsData.id}}</p>

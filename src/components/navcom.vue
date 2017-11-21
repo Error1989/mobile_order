@@ -6,7 +6,7 @@
 
     <div class="weui-grids">
       <!--banner图片-->
-      <div class="banner"><img src="../assets/img/banner2.jpg" alt=""></div>
+      <div class="banner"><img src="../assets/img/banner3.jpg" alt=""></div>
 
       <router-link to="/order" class="weui-grid js_grid">
         <div class="weui-grid__icon">

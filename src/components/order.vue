@@ -147,23 +147,43 @@
           <input class="weui-input" type="text" placeholder="请输入收货人的街道地址" v-model="receiver_address">
         </div>
       </div>
-      <div class="weui-cell">
+     <div class="weui-cell">
+        <div class="weui-cell__hd"><label class="weui-label">是否快递：</label></div>
+        <div class="weui-cell__bd">
+          <div class="weui-cell__ft">
+            <input class="weui-switch" type="checkbox" checked="checked" v-model="isExpress">
+          </div>
+        </div>
+      </div>
+      <div class="weui-cell" v-if="isExpress">
         <div class="weui-cell__hd"><label class="weui-label">邮编：</label></div>
         <div class="weui-cell__bd">
           <input class="weui-input" type="number" pattern="[0-9]*" placeholder="请输入邮政编号" v-model.trim="receiver_zip">
+        </div>
+      </div>
+      <div class="weui-cell weui-cell_select weui-cell_select-after" v-if="isExpress">
+        <!--<div class="weui-cell__hd">-->
+          <!--<label for="" class="weui-label">快递公司</label>-->
+        <!--</div>-->
+        <div class="weui-cell__bd">
+           <select class="weui-select" v-model="expressMess">
+            <option disabled value="">请选择快递公司</option>
+            <option v-for="item in expressData" :value="item.code+'-'+item.name">{{item.name}}</option>
+          </select>
         </div>
       </div>
 
       <div class="weui-cells weui-cells_form">
         <div class="weui-cell">
           <div class="weui-cell__bd">
-            <textarea class="weui-textarea" placeholder="请在此处输入备注信息（可选）" rows="3" v-model="remark"></textarea>
+            <textarea class="weui-textarea" placeholder="可在此处输入备注信息" rows="3" v-model="remark"></textarea>
             <div class="weui-textarea-counter"><span>0</span>/200</div>
           </div>
         </div>
       </div>
     </div>
-    <button type="submit" class="weui-btn weui-btn_primary weui-flex__item " v-if="receiver_name&&receiver_mobile&&receiver_province&&receiver_city&&receiver_district&&receiver_address&&receiver_zip&&products" @click="onSubmit">提交信息</button>
+    <button type="submit" class="weui-btn weui-btn_primary weui-flex__item " v-if="receiver_name&&receiver_mobile&&receiver_province&&receiver_city&&receiver_district&&receiver_address&&products&&receiver_zip&&expressMess" @click="onSubmit">提交信息</button>
+    <button type="submit" class="weui-btn weui-btn_primary weui-flex__item " v-else-if="receiver_name&&receiver_mobile&&receiver_province&&receiver_city&&receiver_district&&receiver_address&&products&&isExpress==false" @click="onSubmit">提交信息</button>
     <button type="submit" class="weui-btn weui-btn_primary weui-flex__item weui-btn_disabled" v-else>提交订单</button>
   </div>
 </template>
@@ -178,6 +198,8 @@
         accessoriesData: [],
         //收货人及地址信息
         addressData: [],
+		    //快递公司数据
+        expressData: [],
 
         products:[],
         accessories:[],
@@ -185,16 +207,25 @@
         receiver_mobile: '',
         receiver_address: '',
         receiver_zip: '',
+		    isExpress: true,
+		    expressMess: '',
         remark: '',
         receiver_province: '',
         receiver_city: '',
         receiver_district: '',
       }
     },
+	 watch: {
+      isExpress: function () {
+        this.receiver_zip = '';
+        this.expressMess = '';
+      }
+    },
     mounted () {
       this.getProductsData();
-      this.getAccessoriesData();
+//      this.getAccessoriesData();
       this.getAddressData();
+	  this.getExpress();
       $("#distpicker3").distpicker({
 
       });
@@ -205,19 +236,23 @@
             this.products.push(this.productsData[i]);
             alert("选择成功");
       },
+
       //删除商品功能
       delProducts (i) {
         this.products.splice(i,1);
       },
+
       //添加辅料功能
       addAccessories (i) {
             this.accessories.push(this.accessoriesData[i]);
             alert("选择成功");
       },
+
       //删除辅料功能
       delAccessories (i) {
         this.accessories.splice(i,1);
       },
+
       //添加收货人及地址信息
       addAddress (i) {
         this.receiver_name = this.addressData[i].receiver_name;
@@ -235,15 +270,18 @@
         });
         alert("选择成功");
       },
+
       //订单提交功能
       onSubmit () {
         this.$http.post('http://www.sikedaodi.com/jikebang/api/web/index.php?r=customer/submit-order',{
           products:this.products,
-          //accessories:this.accessories,
+//          accessories:this.accessories,
           receiver_name:this.receiver_name,
           receiver_mobile:this.receiver_mobile,
           receiver_address:this.receiver_address,
           receiver_zip:this.receiver_zip,
+		      express_code:this.expressMess.split('-')[0],
+          express_name: this.expressMess.split('-')[1],
           remark:this.remark,
           receiver_province:this.receiver_province,
           receiver_city:this.receiver_city,
@@ -258,6 +296,7 @@
           alert('提交失败');
         })
       },
+
       //获取商品的数据（遮罩层）
       getProductsData () {
         this.$http.post('http://www.sikedaodi.com/jikebang/api/web/index.php?r=product/list',{
@@ -268,6 +307,7 @@
           this.productsData=res.data;
         })
       },
+
       //获取辅料的数据（遮罩层）
       getAccessoriesData () {
         this.$http.post('http://www.sikedaodi.com/jikebang/api/web/index.php?r=product/accessory-list',{
@@ -278,6 +318,7 @@
           this.accessoriesData=res.data;
         })
       },
+
       //获取收货人及地址的数据（遮罩层）
       getAddressData () {
         this.$http.post('http://www.sikedaodi.com/jikebang/api/web/index.php?r=customer/address-list',{
@@ -286,6 +327,17 @@
         }).then(response=>{
           let res = response.data;
           this.addressData=res.data;
+        })
+      },
+
+	  //获取快递公司信息
+      getExpress () {
+        this.$http.post('http://www.sikedaodi.com/jikebang/api/web/index.php?r=common/express-list',{
+          customerId:window.localStorage.getItem('customerId'),
+          access_token:window.localStorage.getItem('access_token'),
+        }).then(response=>{
+          let res = response.data;
+          this.expressData=res.data;
         })
       },
     },
