@@ -4,7 +4,6 @@
     <list default="true" id="ebf73347-614c-47a1-9bce-398974c63d8f" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/order.vue" afterPath="$PROJECT_DIR$/src/components/order.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/order_details.vue" afterPath="$PROJECT_DIR$/src/components/order_details.vue" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -54,8 +53,8 @@
       <file leaf-file-name="order.vue" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/components/order.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2735">
-              <caret line="281" column="43" lean-forward="true" selection-start-line="281" selection-start-column="43" selection-end-line="281" selection-end-column="43" />
+            <state relative-caret-position="458">
+              <caret line="266" column="43" lean-forward="true" selection-start-line="266" selection-start-column="43" selection-end-line="266" selection-end-column="43" />
               <folding />
             </state>
           </provider>
@@ -76,8 +75,8 @@
       <file leaf-file-name="order_details.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/order_details.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="294">
-              <caret line="44" column="14" lean-forward="true" selection-start-line="44" selection-start-column="14" selection-end-line="44" selection-end-column="14" />
+            <state relative-caret-position="3289">
+              <caret line="143" column="30" lean-forward="true" selection-start-line="143" selection-start-column="30" selection-end-line="143" selection-end-column="30" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
               </folding>
@@ -141,8 +140,8 @@
         <option value="$PROJECT_DIR$/src/App.vue" />
         <option value="$PROJECT_DIR$/src/main.js" />
         <option value="$PROJECT_DIR$/src/components/Hello.vue" />
-        <option value="$PROJECT_DIR$/src/components/order.vue" />
         <option value="$PROJECT_DIR$/src/components/order_details.vue" />
+        <option value="$PROJECT_DIR$/src/components/order.vue" />
       </list>
     </option>
   </component>
@@ -238,7 +237,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="D:/mobile_approval" />
     <property name="settings.editor.selected.configurable" value="Settings.JavaScript" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
@@ -421,7 +420,7 @@
       <workItem from="1509173982068" duration="27000" />
       <workItem from="1511186588190" duration="941000" />
       <workItem from="1511230175020" duration="954000" />
-      <workItem from="1511232974461" duration="125000" />
+      <workItem from="1511232974461" duration="679000" />
     </task>
     <task id="LOCAL-00001" summary="test2">
       <created>1497076367201</created>
@@ -434,7 +433,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="478376000" />
+    <option name="totallyTimeSpent" value="478930000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -446,7 +445,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="1938" height="1050" extended-state="7" />
+    <frame x="-9" y="-9" width="1938" height="1050" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24048626" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -888,8 +887,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/order_details.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="44" column="14" lean-forward="true" selection-start-line="44" selection-start-column="14" selection-end-line="44" selection-end-column="14" />
+        <state relative-caret-position="3289">
+          <caret line="143" column="30" lean-forward="true" selection-start-line="143" selection-start-column="30" selection-end-line="143" selection-end-column="30" />
           <folding>
             <element signature="n#style#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
           </folding>
@@ -898,8 +897,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/order.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2735">
-          <caret line="281" column="43" lean-forward="true" selection-start-line="281" selection-start-column="43" selection-end-line="281" selection-end-column="43" />
+        <state relative-caret-position="458">
+          <caret line="266" column="43" lean-forward="true" selection-start-line="266" selection-start-column="43" selection-end-line="266" selection-end-column="43" />
           <folding />
         </state>
       </provider>
