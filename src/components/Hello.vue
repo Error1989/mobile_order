@@ -6,7 +6,7 @@
     <div class="weui-cell">
       <div class="weui-cell__hd"><label class="weui-label">用户名：</label></div>
       <div class="weui-cell__bd">
-        <input class="weui-input" type="tel" placeholder="请输入您的用户名" v-model.trim="phone">
+        <input class="weui-input" type="text" placeholder="请输入您的用户名" v-model.trim="phone">
       </div>
       <div class="weui-cell__ft">
         <button class="weui-vcode-btn" @click="getPhone" style="font-size: 15px;">最近登录</button>
