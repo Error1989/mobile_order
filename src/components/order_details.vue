@@ -77,6 +77,7 @@
 </template>
 
 <script>
+  import url from '../api_url'
   import Vue from 'vue'
     export default {
         name: 'order_details',
@@ -88,6 +89,7 @@
               expressData:[],
             }
         },
+      components: {url},
       mounted () {
         this.getOrder_details();
         this.getExpressData();
@@ -96,7 +98,7 @@
         //获取订单的基本信息
         getOrder_details () {
           this.loading = true;
-          this.$http.post('http://www.sikedaodi.com/jikebang/api/web/index.php?r=customer/order-detail',{
+          this.$http.post(url.orderDetail,{
             order_id:this.$route.query.id,
             customerId:window.localStorage.getItem('customerId'),
             access_token:window.localStorage.getItem('access_token'),
@@ -109,7 +111,7 @@
         //获取订单的物流信息
         getExpressData () {
           this.loading = true;
-          this.$http.post('http://www.sikedaodi.com/jikebang/api/web/index.php?r=common/express-info',{
+          this.$http.post(url.expressInfo,{
             order_id:this.$route.query.id,
             customerId:window.localStorage.getItem('customerId'),
             access_token:window.localStorage.getItem('access_token'),

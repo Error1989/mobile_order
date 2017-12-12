@@ -25,6 +25,7 @@
 </template>
 
 <script>
+  import url from '../api_url'
     export default {
         name: 'search',
         data () {
@@ -36,6 +37,7 @@
               busy:true,
             }
         },
+      components: {url},
       mounted () {
           this.getSearch();
 
@@ -44,7 +46,7 @@
         //获取订单的数据
         getSearch(flag){
           this.loading = true;
-          this.$http.post('http://www.sikedaodi.com/jikebang/api/web/index.php?r=customer/my-orders',{
+          this.$http.post(url.order,{
             customerId:window.localStorage.getItem('customerId'),
             access_token:window.localStorage.getItem('access_token'),
             page:this.page,
@@ -103,6 +105,6 @@
     margin-top:0px;
   }
   .weui-media-box__desc {
-	font-size: 15px;	
+	font-size: 15px;
   }
 </style>

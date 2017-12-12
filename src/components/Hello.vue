@@ -25,6 +25,7 @@
 </template>
 
 <script>
+  import url from '../api_url'
 export default{
   name: 'login',
       data () {
@@ -33,6 +34,7 @@ export default{
           password: '',
         }
   },
+  components: {url},
   mounted () {
 
   },
@@ -52,7 +54,7 @@ export default{
       let customerPhone = this.phone;
       $.ajax({
         type:'post',
-        url:'http://www.sikedaodi.com/jikebang/api/web/index.php?r=auth/login',
+        url:url.login,
         dataType:'json',
         data:{phone:this.phone, password:this.password,},
         async:false,
