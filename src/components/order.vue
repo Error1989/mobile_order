@@ -42,6 +42,7 @@
         <header>
           <h3>选择商品</h3>
         </header>
+        <a href="javascript:;" class="close-popup weui-btn weui-btn_primary" data-target="">确 认</a>
         <div class="weui-cells">
           <div class="weui-cell" v-for="(item,index) in productsData">
             <div class="weui-cell__bd">
@@ -52,7 +53,6 @@
             </div>
           </div>
         </div>
-        <a href="javascript:;" class="close-popup weui-btn weui-btn_primary" data-target="">关 闭</a>
       </div>
     </div>
     <!--选择辅料部分（遮罩层）-->
@@ -62,6 +62,7 @@
         <header>
           <h3>选择辅料</h3>
         </header>
+        <a href="javascript:;" class="close-popup weui-btn weui-btn_primary" data-target="">确 认</a>
         <div class="weui-cells">
           <div class="weui-cell" v-for="(item,index) in accessoriesData">
             <div class="weui-cell__bd">
@@ -72,7 +73,6 @@
             </div>
           </div>
         </div>
-        <a href="javascript:;" class="close-popup weui-btn weui-btn_primary" data-target="">关 闭</a>
       </div>
     </div>
 
@@ -86,6 +86,7 @@
         <header>
           <h3>收货人及地址</h3>
         </header>
+        <a href="javascript:;" class="close-popup weui-btn weui-btn_primary" data-target="">确 认</a>
         <div class="weui-cells">
           <div class="weui-cell" v-for="(item,index) in addressData">
             <div class="weui-cell__bd">
@@ -100,7 +101,6 @@
             </div>
           </div>
         </div>
-        <a href="javascript:;" class="close-popup weui-btn weui-btn_primary" data-target="">关 闭</a>
       </div>
     </div>
 
@@ -292,8 +292,8 @@
           access_token:window.localStorage.getItem('access_token'),
         }).then((response) => {
           alert(response.data.msg);
-          //location.reload();
-          this.$router.push({path:'/navcom'});
+          location.reload();
+//          this.$router.push({path:'/navcom'});
         },(error) => {
           alert('提交失败');
         })
@@ -368,8 +368,9 @@
     margin-top: 50px;
   }
   .close-popup {
-    width: 70%;
+    width: 50%;
     margin-top: 20px;
+    margin-bottom: 20px;
   }
   .weui-cells {
     margin-top:0px;
