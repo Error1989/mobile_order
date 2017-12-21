@@ -15,6 +15,9 @@ import VueLazyLoad from 'vue-lazyload'
 import VueRouter from "vue-router"
 import Vuex from 'vuex'
 import VueResource from 'vue-resource'
+import YDUI from 'vue-ydui';
+import 'vue-ydui/dist/ydui.rem.css';
+Vue.use(YDUI);
 Vue.use(VueResource)
 Vue.use(VueRouter)
 Vue.use(Vuex)
@@ -137,6 +140,7 @@ Vue.config.productionTip = false
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
+  render: h => h(App),
   router,
   template: '<App/>',
   components: { App, order, product, accessory, search, order_details, navcom, distpicker}
